@@ -14,7 +14,7 @@ async def lifespan(app: FastAPI):
 
 
 app = FastAPI(lifespan=lifespan,
-              title='iris_fastapi_demo')
+              title='iris_fastapi_demo v.2305041317')
 
 
 @app.get('/')
