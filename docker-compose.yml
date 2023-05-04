@@ -1,7 +1,7 @@
 version: '3.9'
 services:
   api:
-    container_name: ml_fastapi
+    container_name: iris_fastapi
     volumes:
       - ./app:/app
     build: .
