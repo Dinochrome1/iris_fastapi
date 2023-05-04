@@ -1,4 +1,4 @@
-from pydantic import BaseModel
+from pydantic import BaseModel, validator, root_validator
 from sklearn import datasets
 from sklearn.model_selection import train_test_split
 from sklearn.naive_bayes import GaussianNB
@@ -18,6 +18,12 @@ class QueryIn(BaseModel):
     sepal_width: float
     petal_length: float
     petal_width: float
+
+    @validator('sepal_length', 'sepal_width', 'petal_length', 'petal_width')
+    def name_must_be_greater_than_zero(cls, v):
+        if v <= 0:
+            raise ValueError('must be greater than zero')
+        return v
 
 
 class QueryOut(BaseModel):
